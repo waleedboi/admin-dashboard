@@ -1,0 +1,98 @@
+.email-verification-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+margin: 60px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.logo-image {
+    width: 230px;
+
+    margin: 5px auto 15px;
+    display: block;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-top: 3%;
+    color: #2F2B3DE5;
+   
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.subtitle .email {
+    font-weight: 600;
+    font-size: 16px;
+    color: #2F2B3DE5;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+   
+    color: #2F2B3DE5;
+}
+
+.input-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6C6B77;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 94%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    
+}
+
+.continue-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #076271;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.continue-btn:hover {
+    background-color: #076271;
+}
+
+.resend-text {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    text-align: center;
+}
+
+.resend-btn {
+    background: none;
+    border: none;
+    color: #076271;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+}

@@ -1,0 +1,33 @@
+.nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white; /* optional: for white text */
+}
+
+.tab-item.active {
+  background-color: #076271;
+}
+
+.tab-item .icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

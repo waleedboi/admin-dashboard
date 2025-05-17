@@ -1,0 +1,35 @@
+.vehicle-pricing table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+
+.vehicle-pricing th,
+.vehicle-pricing td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.vehicle-pricing button {
+  padding: 5px 10px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.vehicle-pricing button:hover {
+  background-color: #1976d2;
+}
+.main-container {
+  padding: 20px;
+  background-color: #fff;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+margin: 70px 0px 0px 130px ;
+ max-width: 1200px;
+ width: 100%;
+
+}
+

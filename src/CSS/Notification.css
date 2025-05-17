@@ -1,0 +1,138 @@
+
+.notification-container {
+  width: 100%; 
+}
+.notification-card>h2 {
+ color: #2F2B3DE5;
+ font-size: 18px;
+  font-weight:500 ;
+}
+.notification-card {
+  background: #fff;
+ 
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top:2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.subtext {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color:#2F2B3D8C
+}
+
+.link {
+  color: #F8B179;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: 500;
+  background: #f1f1f1;
+  color:#2F2B3DE5
+}
+
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-row {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.save-btn, .discard-btn, .send-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save-btn {
+  background-color: #076271;
+  color: white;
+}
+
+.discard-btn {
+  background-color: #80839029;
+  color:#808390;
+  font-weight: 500;
+}
+
+.send-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .notification-container {
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+
+  tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+    padding: 1rem;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+}

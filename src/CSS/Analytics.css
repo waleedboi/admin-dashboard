@@ -1,0 +1,205 @@
+
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+
+.dashboard-container {
+background-color: #f9fafb;
+min-height: 100vh;
+padding: 24px;
+margin:  30px 50px;
+}
+.dashboard-content {
+max-width: 1152px;
+margin: 0 auto;
+}
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 24px;
+}
+.title {
+font-size: 20px;
+font-weight: 700;
+color: #1f2937;
+}
+.header-actions {
+display: flex;
+gap: 8px;
+}
+.tab-buttons {
+display: flex;
+background-color: white;
+border-radius: 6px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.tab-button {
+padding: 8px 16px;
+font-size: 14px;
+color: #6b7280;
+background: none;
+border: none;
+cursor: pointer;
+}
+.tab-button:first-child {
+border-top-left-radius: 6px;
+border-bottom-left-radius: 6px;
+}
+.tab-button:last-child {
+border-top-right-radius: 6px;
+border-bottom-right-radius: 6px;
+}
+.tab-button.active {
+background-color: #dbeafe;
+color: #2563eb;
+font-weight: 500;
+}
+.export-button {
+display: flex;
+align-items: center;
+padding: 8px 16px;
+background-color: white;
+border: 1px solid #e5e7eb;
+border-radius: 6px;
+font-size: 14px;
+color: #4b5563;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+cursor: pointer;
+}
+/* Grid layout */
+.dashboard-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 24px;
+}
+@media (min-width: 1024px) {
+.dashboard-grid {
+grid-template-columns: 2fr 1fr;
+}
+}
+/* Card styles */
+.card {
+background-color: white;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.driver-performance {
+margin-top: 24px;
+}
+.card-header {
+margin-bottom: 24px;
+}
+.section-title {
+font-size: 14px;
+font-weight: 500;
+color: #6b7280;
+}
+.section-subtitle {
+font-size: 12px;
+color: #9ca3af;
+}
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 16px;
+margin-bottom: 24px;
+}
+.stat-value {
+font-size: 20px;
+font-weight: 700;
+color: #1f2937;
+}
+.stat-value.positive {
+color: #10b981;
+}
+.stat-value.negative {
+color: #ef4444;
+}
+.stat-label {
+font-size: 12px;
+color: #6b7280;
+}
+.chart-container {
+height: 256px;
+}
+.delivery-stats-list {
+margin-bottom: 24px;
+}
+.stat-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 8px;
+}
+.progress-chart {
+display: flex;
+justify-content: center;
+padding: 24px 0;
+}
+.progress-circle {
+position: relative;
+width: 160px;
+height: 160px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.circle-svg {
+width: 100%;
+height: 100%;
+}
+.progress-text {
+position: absolute;
+text-align: center;
+}
+.progress-value {
+font-size: 24px;
+font-weight: 700;
+color: #1f2937;
+}
+.progress-label {
+font-size: 12px;
+color: #6b7280;
+}
+/* Driver table */
+.table-container {
+overflow-x: auto;
+}
+.driver-table {
+min-width: 100%;
+border-collapse: collapse;
+}
+.driver-table th {
+padding-bottom: 12px;
+text-align: left;
+font-size: 14px;
+font-weight: 500;
+color: #6b7280;
+}
+.driver-table td {
+padding: 12px 0;
+font-size: 14px;
+color: #4b5563;
+}
+.driver-name {
+display: flex;
+align-items: center;
+}
+.driver-avatar {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background-color: #e5e7eb;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 12px;
+}
+.avatar-icon {
+color: #4b5563;
+}
