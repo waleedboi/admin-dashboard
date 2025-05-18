@@ -3,7 +3,7 @@ import "../CSS/Navbar.css";
 
 const Navbar = ({ currentPage, toggleSidebar, sidebarCollapsed }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
@@ -13,10 +13,10 @@ const Navbar = ({ currentPage, toggleSidebar, sidebarCollapsed }) => {
   const formatPageName = (pageName) => {
 
     if (pageName === 'overview') return 'Overview';
-   
+
     return pageName;
   };
-  
+
   return (
     <div className={`navbar ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
       <div className="d-flex align-items-center">
@@ -33,15 +33,18 @@ const Navbar = ({ currentPage, toggleSidebar, sidebarCollapsed }) => {
           </ol>
         </nav>
       </div>
-      
+
       <div className="navbar-right">
         <div className="search-container">
+          <img src="/public/Icon & Text.svg" alt="Search" className="search-icon" />
           <input
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
+  type="text"
+  placeholder="Search"
+  className="search-input"
+  value={searchTerm || ''}  
+  onChange={handleSearchChange}
+/>
+
         </div>
         <div className="notification-icon">
           <img src="/Group.svg" className="badgess" alt="Notifications" />

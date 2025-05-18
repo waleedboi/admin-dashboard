@@ -4,21 +4,32 @@ import "../CSS/login.css";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
-
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  console.log("Form submitted", { email, password });
+
+  if (email === "admin@example.com" && password === "123456") {
     localStorage.setItem("token", "demo_token");
-    navigate("/");
-  };
+    console.log("Token set, navigating to overview");
+    navigate("/overview");
+  } else {
+    console.log("Login failed");
+    setError("Invalid email or password");
+  }
+};
 
   return (
     <form className="signup-form login-form" onSubmit={handleSubmit}>
-      <img src="/public/DELIVERMEE LOGO 1.svg" alt="Logo" />
+      <img src="/DELIVERMEE LOGO 1.svg" alt="Logo" />
       <h2 className="signup">Login</h2>
       <p className="subtitle">Enter Your Account Details to Log In..</p>
 
@@ -26,8 +37,16 @@ const Login = () => {
         Account Information
       </h4>
 
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       <label>Email or Username</label>
-      <input type="email" placeholder="Enter your email" required />
+      <input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
 
       <label>Password</label>
       <div className="password-field">
@@ -36,6 +55,8 @@ const Login = () => {
           placeholder="Enter password"
           required
           className="password-input"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <span
           onClick={togglePassword}
@@ -47,15 +68,13 @@ const Login = () => {
         </span>
       </div>
 
-
       <div className="form-options">
-  <div className="remember-me">
-    <input type="checkbox" id="terms" required />
-    <label htmlFor="terms">Remember Me</label>
-  </div>
-  <Link to="/reset-password" className="forgot-password">Forgot Password?</Link>
-</div>
-
+        <div className="remember-me">
+          <input type="checkbox" id="terms" />
+          <label htmlFor="terms">Remember Me</label>
+        </div>
+        <Link to="/reset-password" className="forgot-password">Forgot Password?</Link>
+      </div>
 
       <button
         type="submit"
@@ -74,21 +93,24 @@ const Login = () => {
 
       <p className="login-link">
         New on our platform?{" "}
-        <Link to="/signup" style={{ color: "#076271", cursor: "pointer", fontSize: "15px",fontWeight:"400" }}>
+        <Link to="/signup" style={{ color: "#076271", cursor: "pointer", fontSize: "15px", fontWeight: "400" }}>
           Create an account
         </Link>
       </p>
 
       <p className="or">or Login with</p>
       <div className="social-icons">
-        <img src="/public/Icon left.svg" alt="Google" />
-        <img src="/public/Microsoft.svg" alt="Microsoft" />
+        <img src="/Icon left.svg" alt="Google" />
+        <img src="/Microsoft.svg" alt="Microsoft" />
       </div>
     </form>
   );
 };
 
 export default Login;
+
+
+
 
 
 

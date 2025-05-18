@@ -24,7 +24,7 @@ const Notifications = () => {
   };
 
   return (
-    <div className="main-content">
+    // <div className="main-content">
     <div className="notification-container">
       <h2>Notifications</h2>
 
@@ -102,7 +102,8 @@ const Notifications = () => {
         ></textarea>
         <button className="send-btn" onClick={handleSendNotification}>Send Notification</button>
       </div>
-    </div></div>
+    </div>
+    // </div>
   );
 };
 

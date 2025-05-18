@@ -5,12 +5,11 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
 import Sidebar from "./Components/sidebar";
 import ResetPassword from './Components/ResetPassword';
-
-
 import Navbar from "./Components/navbar";
-import Home from "./Components/Home";
+import Overview from "./Components/Overview";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Driver from "./Components/Driver";
@@ -24,12 +23,11 @@ import Monitoring from "./Components/monitoring";
 import Support from "./Components/Support";
 import Setting from "./Components/Setting";
 import VerifyEmail from "./Components/VerifyEmail";
-
 import "./App.css";
 
 function Dashboard({ currentPage, setCurrentPage, sidebarCollapsed, toggleSidebar }) {
   return (
-    <div className="app-container">
+    <div className="app-container" style={{ display: "flex" }}>
       <Sidebar
         toggleSidebar={toggleSidebar}
         currentPage={currentPage}
@@ -37,11 +35,10 @@ function Dashboard({ currentPage, setCurrentPage, sidebarCollapsed, toggleSideba
         collapsed={sidebarCollapsed}
       />
 
-      <div className="main-section">
-        
+      <div className="main-section" style={{ flexGrow: 1 }}>
         <Navbar currentPage={currentPage} toggleSidebar={toggleSidebar} />
         <div className="main-content">
-          {currentPage === "Home" && <Home />}
+          {currentPage === "Overview" && <Overview />}
           {currentPage === "Driver" && <Driver />}
           {currentPage === "Dispute" && <Dispute />}
           {currentPage === "Content" && <Content />}
@@ -59,7 +56,7 @@ function Dashboard({ currentPage, setCurrentPage, sidebarCollapsed, toggleSideba
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("Home");
+  const [currentPage, setCurrentPage] = useState("Overview");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [tokenExists, setTokenExists] = useState(false);
 
@@ -68,8 +65,8 @@ function App() {
   };
 
   useEffect(() => {
-    // const token = localStorage.getItem("token");
-    // setTokenExists(!!token);
+    const token = localStorage.getItem("token");
+    setTokenExists(!!token);
 
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -85,16 +82,27 @@ function App() {
   return (
     <Router>
       <Routes>
-       <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/VerifyEmail" element={<VerifyEmail />} />
-
         <Route
           path="/login"
-          element={tokenExists ? <Navigate to="/" /> : <Login onLoginSuccess={() => setTokenExists(true)} />}
+          element={
+            tokenExists ? (
+              <Navigate to="/" />
+            ) : (
+              <Login onLoginSuccess={() => setTokenExists(true)} />
+            )
+          }
         />
         <Route
           path="/signup"
-          element={tokenExists ? <Navigate to="/" /> : <Signup onSignupSuccess={() => setTokenExists(true)} />}
+          element={
+            tokenExists ? (
+              <Navigate to="/" />
+            ) : (
+              <Signup onSignupSuccess={() => setTokenExists(true)} />
+            )
+          }
         />
         <Route
           path="/"
@@ -118,4 +126,5 @@ function App() {
 }
 
 export default App;
+
 

@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import "../CSS/user.css";
 
@@ -8,25 +6,21 @@ const User = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("name-asc");
 
-  const totalPages = 5;
   const itemsPerPage = 5;
+  const pageLimit = 5;
 
-  // Dummy Users List
-  const allUsers = [
-    { name: "Alex John", email: "alex@gmail.com", method: "Email", rides: 15 },
-    { name: "Sara Khan", email: "sara@yahoo.com", method: "Phone", rides: 42 },
-    { name: "John Doe", email: "john@google.com", method: "Google", rides: 122 },
-    { name: "Emily Rose", email: "emily@gmail.com", method: "Email", rides: 87 },
-    { name: "Michael Lee", email: "michael@yahoo.com", method: "Phone", rides: 35 },
-  ];
+  const allUsers = Array.from({ length: 50 }, (_, i) => ({
+    name: `User ${i + 1}`,
+    email: `user${i + 1}@example.com`,
+    method: i % 2 === 0 ? "Email" : "Phone",
+    rides: Math.floor(Math.random() * 100),
+  }));
 
-  // Filter by search
   const filteredUsers = allUsers.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Sort users
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     switch (sortOption) {
       case "name-asc":
@@ -42,7 +36,25 @@ const User = () => {
     }
   });
 
-  // Export to CSV
+  const totalPages = Math.ceil(sortedUsers.length / itemsPerPage);
+  const indexOfLastUser = currentPage * itemsPerPage;
+  const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+  const currentUsers = sortedUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+  const startPage = Math.floor((currentPage - 1) / pageLimit) * pageLimit + 1;
+  const endPage = Math.min(startPage + pageLimit - 1, totalPages);
+
+  const goToPage = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
   const handleExport = () => {
     const headers = ["Name", "Email", "Sign-Up Method", "Total Rides"];
     const rows = sortedUsers.map(user =>
@@ -59,53 +71,44 @@ const User = () => {
     document.body.removeChild(link);
   };
 
-  const goToPage = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
-
-  // Calculate pagination values
-  const indexOfLastUser = currentPage * itemsPerPage;
-  const indexOfFirstUser = indexOfLastUser - itemsPerPage;
-  const currentUsers = sortedUsers.slice(indexOfFirstUser, indexOfLastUser);
-
   return (
     <div className="user-container">
       <div className="user-header">
         <h2 className="user-title">Users</h2>
       </div>
-      
+
       <div className="users-section">
         <div className="users-header">
           <div className="section-header">
             <h2>Recent Users</h2>
             <span>All the recent users</span>
           </div>
+
           <div className="toolbar">
-  <input
-    type="text"
-    placeholder="Search"
-    className="search-bar"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-  />
+            <div className="search-container">
+              <img src="/Icon & Text.svg" alt="Search" className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="search-input"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+            </div>
 
-  <div className="sort-dropdown">
-    <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-      <option value="name-asc">Name ↑</option>
-      <option value="name-desc">Name ↓</option>
-      <option value="rides-asc">Rides ↑</option>
-      <option value="rides-desc">Rides ↓</option>
-    </select>
-  </div>
+            <div className="sort-dropdown">
+              <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                <option value="name-asc">Name ↑</option>
+                <option value="name-desc">Name ↓</option>
+                <option value="rides-asc">Rides ↑</option>
+                <option value="rides-desc">Rides ↓</option>
+              </select>
+            </div>
 
-  <div className="export-button" onClick={handleExport}>
-    <span>Export</span>
-    <span role="img" aria-label="download">📥</span>
-  </div>
-</div>
-
+            <button className="export-button" onClick={handleExport}>
+              Export 📥
+            </button>
+          </div>
         </div>
 
         <div className="table-responsive">
@@ -116,7 +119,7 @@ const User = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Sign-Up Method</th>
-                <th>Total Rides</th>
+                <th>Total Deliveries</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -148,22 +151,51 @@ const User = () => {
 
         <div className="pagination-container">
           <p className="pagination-info">
-            Showing {indexOfFirstUser + 1} to {Math.min(indexOfLastUser, filteredUsers.length)} of {filteredUsers.length} entries
+            Showing {indexOfFirstUser + 1} to {Math.min(indexOfLastUser, sortedUsers.length)} of {sortedUsers.length} entries
           </p>
           <div className="pagination">
-            <div className="page-item" onClick={() => goToPage(1)}>«</div>
-            <div className="page-item" onClick={() => goToPage(currentPage - 1)}>‹</div>
-            {Array.from({ length: totalPages }, (_, i) => (
-              <div
-                key={i}
-                className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
-                onClick={() => goToPage(i + 1)}
-              >
-                {i + 1}
-              </div>
-            ))}
-            <div className="page-item" onClick={() => goToPage(currentPage + 1)}>›</div>
-            <div className="page-item" onClick={() => goToPage(totalPages)}>»</div>
+            <button
+              className="page-item"
+              disabled={currentPage === 1}
+              onClick={() => goToPage(1)}
+            >
+              «
+            </button>
+            <button
+              className="page-item"
+              disabled={currentPage === 1}
+              onClick={() => goToPage(currentPage - 1)}
+            >
+              ‹
+            </button>
+
+            {Array.from({ length: endPage - startPage + 1 }, (_, i) => {
+              const page = startPage + i;
+              return (
+                <button
+                  key={page}
+                  className={`page-item ${currentPage === page ? "active" : ""}`}
+                  onClick={() => goToPage(page)}
+                >
+                  {page}
+                </button>
+              );
+            })}
+
+            <button
+              className="page-item"
+              disabled={currentPage === totalPages}
+              onClick={() => goToPage(currentPage + 1)}
+            >
+              ›
+            </button>
+            <button
+              className="page-item"
+              disabled={currentPage === totalPages}
+              onClick={() => goToPage(totalPages)}
+            >
+              »
+            </button>
           </div>
         </div>
       </div>

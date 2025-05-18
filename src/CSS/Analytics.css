@@ -10,7 +10,7 @@ padding: 0;
 background-color: #f9fafb;
 min-height: 100vh;
 padding: 24px;
-margin:  30px 50px;
+/* margin:  30px 50px; */
 }
 .dashboard-content {
 max-width: 1152px;
