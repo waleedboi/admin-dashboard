@@ -22,7 +22,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 1000;
-    /* margin: auto; */
+  
     border-top-right-radius: 25px;
     border-bottom-right-radius: 24px;
     border-left: none;
@@ -32,27 +32,51 @@
     width: 70px;
 }
 
-    .logo {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        background-color: #076271;
-        color: #ffffff;
-        font-size: 1.2rem;
-        font-weight: bold;
-        gap: 10px;
-    }
 
-    .toggle-icon {
-        cursor: pointer;
-        font-size: 1.2rem;
-        color: white;
-        transition: transform 0.2s ease;
-    }
+.logo {
+   /* background-color: #008895; 
+  padding: 15px 20px;
+  display: inline-block;
+  width: 100%; */
+   background-color: #008895;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.logo-text {
+  font-family: 'Arial', sans-serif; 
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    .toggle-icon:hover {
-        transform: scale(1.1);
-    }
+.logo-text-deliver {
+  color: #004450; 
+  font-weight: 400; 
+  font-size: 24px;
+}
+
+.logo-text-mee {
+  color: #a1b5b8 !important;
+  font-weight: 700; 
+  font-size: 24px;
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-top: 15px;
+    color:white !important;
+  transition: color 0.3s ease;
+}
+
+.toggle-icon:hover {
+  color: #ff6b00; 
+}
 
 .menu {
     list-style: none;
@@ -156,8 +180,6 @@
 .logo-text.highlight {
     color: #9ab1b4;
 }
-
-/* Mobile sidebar toggle button styling */
 .mobile-toggle {
     display: none;
     position: fixed;
@@ -192,12 +214,10 @@
         font-size: 0.75rem;
     }
 }
-
-/* Mobile styles with fixes */
 @media (max-width: 768px) {
     .sidebar {
         position: fixed;
-        left: -220px; /* Start off-screen */
+        left: -220px; 
         width: 220px;
         z-index: 2000;
         transition: left 0.3s ease;
@@ -205,24 +225,24 @@
     }
 
     .sidebar.open {
-        left: 0; /* Show when open class is applied */
+        left: 0; 
         box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
     }
 
     .sidebar.collapsed {
-        left: -60px; /* Hide when collapsed */
+        left: -60px; 
         width: 60px;
     }
 
     .sidebar.collapsed.open {
-        left: 0; /* Show collapsed sidebar when open */
+        left: 0;
     }
 
     .main-content {
-        margin-left: 0 !important; /* Always no margin on mobile */
+        margin-left: 0 !important;
     }
 
-    /* Improved menu and logo spacing for mobile */
+
     .menu-item {
         padding: 12px 15px;
         font-size: 0.95rem;
@@ -231,18 +251,14 @@
     .logo {
         padding: 12px;
         font-size: 1rem;
-        justify-content: space-between; /* Push logo and toggle icon apart */
+        justify-content: space-between; 
     }
-
-    /* Make the toggle more visible and clickable */
     .logo .toggle-icon {
         font-size: 1.3rem;
         color: white;
-        margin-left: auto; /* Push to right */
+        margin-left: auto; 
         padding: 8px;
     }
-
-    /* Add overlay for better UX when sidebar is open */
     .sidebar-overlay {
         display: none;
         position: fixed;
@@ -251,15 +267,13 @@
         right: 0;
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1999; /* Below sidebar but above everything else */
+        z-index: 1999; 
     }
 
     .sidebar-overlay.visible {
         display: block;
     }
 }
-
-/* For small mobile (≤ 480px) */
 @media (max-width: 480px) {
     .sidebar {
         width: 180px;

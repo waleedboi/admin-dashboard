@@ -12,20 +12,19 @@ const Login = () => {
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
+
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    console.log("Form submitted", { email, password });
 
-  console.log("Form submitted", { email, password });
-
-  if (email === "admin@example.com" && password === "123456") {
-    localStorage.setItem("token", "demo_token");
-    console.log("Token set, navigating to overview");
-    navigate("/overview");
-  } else {
-    console.log("Login failed");
-    setError("Invalid email or password");
-  }
-};
+    if (email.trim() === "admin@example.com" && password.trim() === "123456") {
+      console.log("Login successful, navigating to overview");
+      navigate("/overview"); 
+    } else {
+      console.log("Login failed");
+      setError("Invalid email or password");
+    }
+  };
 
   return (
     <form className="signup-form login-form" onSubmit={handleSubmit}>
@@ -64,7 +63,7 @@ const Login = () => {
           aria-label="Toggle password visibility"
           className="toggle-icon"
         >
-          <img src="/eye.svg" alt="Toggle visibility" />
+          {/* <img src="/eye.svg" alt="Toggle visibility" /> */}
         </span>
       </div>
 
@@ -108,7 +107,6 @@ const Login = () => {
 };
 
 export default Login;
-
 
 
 

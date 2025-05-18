@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Sidebar from "./Components/sidebar";
+import Sidebar from "./Components/Sidebar";
 import ResetPassword from './Components/ResetPassword';
 import Navbar from "./Components/navbar";
 import Overview from "./Components/Overview";
@@ -58,16 +58,12 @@ function Dashboard({ currentPage, setCurrentPage, sidebarCollapsed, toggleSideba
 function App() {
   const [currentPage, setCurrentPage] = useState("Overview");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [tokenExists, setTokenExists] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setTokenExists(!!token);
-
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setSidebarCollapsed(true);
@@ -82,49 +78,27 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/VerifyEmail" element={<VerifyEmail />} />
         <Route
-          path="/login"
+          path="/overview"
           element={
-            tokenExists ? (
-              <Navigate to="/" />
-            ) : (
-              <Login onLoginSuccess={() => setTokenExists(true)} />
-            )
+            <Dashboard
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              sidebarCollapsed={sidebarCollapsed}
+              toggleSidebar={toggleSidebar}
+            />
           }
         />
-        <Route
-          path="/signup"
-          element={
-            tokenExists ? (
-              <Navigate to="/" />
-            ) : (
-              <Signup onSignupSuccess={() => setTokenExists(true)} />
-            )
-          }
-        />
-        <Route
-          path="/"
-          element={
-            tokenExists ? (
-              <Dashboard
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                sidebarCollapsed={sidebarCollapsed}
-                toggleSidebar={toggleSidebar}
-              />
-            ) : (
-              <Navigate to="/signup" />
-            )
-          }
-        />
-        <Route path="*" element={<Navigate to={tokenExists ? "/" : "/signup"} />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
 
