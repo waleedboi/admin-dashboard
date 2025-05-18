@@ -20,6 +20,7 @@ const UserProfile = () => {
 
   return (
     <div className="container">
+        <h1 className="support-issue">Support & Issue Resolution</h1>
       <div className='profile'>
         <div className="profile-cards">
           <div className="nav-tabs" >
@@ -91,12 +92,13 @@ const UserProfile = () => {
           
           {activePage === 'account' && (
             <div className="profile-section">
+            
               <div className="profile-photo-section">
                 <div className="profile-photo-container">
                   <img src="/public/Avatarrr.svg" alt="Profile" className="profile-photo" />
                   <div className="photo-buttons">
                     <button className="upload-btn">Upload New Photo</button>
-                    <button className="reset-btn">Reset</button>
+                    <button className="reset-bttn">Reset</button>
                   </div>
                 </div>
                 <div className="photo-info">

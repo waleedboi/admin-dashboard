@@ -27,6 +27,7 @@ const Monitoring = () => {
 
   return (
     <div className="main-content">
+      <h3>Monitoring</h3>
       {/* Map Component */}
       <div className="map-section">
         <div className="map-header">

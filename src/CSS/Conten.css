@@ -1,15 +1,15 @@
 
 .content-main-wrapper {
   padding: 20px 40px;
-  margin: 10px auto;
+ margin: 3.5% 0 0 11% !important;;
   box-sizing: border-box;
 }
 
 .content-heading {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 20px;
-  color: #333;
+  color: #076271;
 }
 
 .content-policy-wrapper {
