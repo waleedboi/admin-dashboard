@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { FiCopy } from "react-icons/fi";
+import { useState } from "react";
+// import { FaEye, FaEyeSlash } from "react-icons/fa";
+// import { FiCopy } from "react-icons/fi";
 import "../CSS/Security.css";
 
 

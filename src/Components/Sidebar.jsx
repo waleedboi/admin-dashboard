@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import '../CSS/sidebar.css';
-import {
-  FaTachometerAlt,
-  FaUser,
-  FaCar,
-  FaRoute,
-  FaMoneyCheckAlt,
-  FaGavel,
-  FaBell,
-  FaChartBar,
-  FaDesktop,
-  FaFileAlt,
-  FaHeadset,
-  FaCog,
-  FaAngleDoubleLeft,
-  FaAngleDoubleRight,
-} from "react-icons/fa";
+// import {
+//   FaTachometerAlt,
+//   FaUser,
+//   FaCar,
+//   FaRoute,
+//   FaMoneyCheckAlt,
+//   FaGavel,
+//   FaBell,
+//   FaChartBar,
+//   FaDesktop,
+//   FaFileAlt,
+//   FaHeadset,
+//   FaCog,
+//   FaAngleDoubleLeft,
+//   FaAngleDoubleRight,
+// }
+//  from "react-icons/fa";
 
 function Sidebar({ collapsed, toggleSidebar, currentPage, setCurrentPage }) {
   useEffect(() => {
@@ -67,23 +68,23 @@ function Sidebar({ collapsed, toggleSidebar, currentPage, setCurrentPage }) {
 
   return (
     <div className={`sidebar ${collapsed ? 'collapsed' : ''}`} id="sidebar">
-       <div className="logo">
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <span className="logo-text logo-text-deliver">DELIVER</span>
-        <span className="logo-text logo-text-mee">MEE</span>
+      <div className="logo">
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <span className="logo-text logo-text-deliver">DELIVER</span>
+          <span className="logo-text logo-text-mee">MEE</span>
+        </div>
+        {collapsed ? (
+          <FaAngleDoubleRight className="toggle-icon" onClick={toggleSidebar} />
+        ) : (
+          <FaAngleDoubleLeft className="toggle-icon" onClick={toggleSidebar} />
+        )}
       </div>
-      {collapsed ? (
-        <FaAngleDoubleRight className="toggle-icon" onClick={toggleSidebar} />
-      ) : (
-        <FaAngleDoubleLeft className="toggle-icon" onClick={toggleSidebar} />
-      )}
-    </div>
 
       <ul className="menu">
         <li className={`menu-item ${currentPage === 'Overview' ? 'active' : ''}`} onClick={() => setCurrentPage('Overview')}>
           <FaTachometerAlt className="dash" />
           <span className="menu-text">Dashboard</span>
-          
+
         </li>
 
         <li className={`menu-item ${currentPage === 'User' ? 'active' : ''}`} onClick={() => setCurrentPage('User')}>
