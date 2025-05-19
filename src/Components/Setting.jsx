@@ -5,7 +5,7 @@ import { FiCopy } from "react-icons/fi";
 
 const UserProfile = () => {
   const [activePage, setActivePage] = useState('account');
-  const [activeTab, setActiveTab] = useState('account'); 
+
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -66,7 +66,7 @@ const UserProfile = () => {
 
   const handleSaveChanges = () => {
     console.log("Saving settings:", { settings, frequency });
-    // Add API logic here
+  
   };
 
   const handleReset = () => {
@@ -186,12 +186,7 @@ const UserProfile = () => {
             <div className="profile-section">
             
               <div className="profile-photo-section">
-                <button
-  className={activeTab === 'checkr' ? 'active-tab' : ''}
-  onClick={() => setActiveTab('checkr')}
->
-  Checkr
-</button>
+         
                 
                 <div className="profile-photo-container">
                 
