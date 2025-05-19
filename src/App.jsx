@@ -23,6 +23,7 @@ import Monitoring from "./Components/monitoring";
 import Support from "./Components/Support";
 import Setting from "./Components/Setting";
 import VerifyEmail from "./Components/VerifyEmail";
+import Security from "./Components/Security";
 import "./App.css";
 
 function Dashboard({ currentPage, setCurrentPage, sidebarCollapsed, toggleSidebar }) {
@@ -49,6 +50,8 @@ function Dashboard({ currentPage, setCurrentPage, sidebarCollapsed, toggleSideba
           {currentPage === "Monitoring" && <Monitoring />}
           {currentPage === "Support" && <Support />}
           {currentPage === "Setting" && <Setting />}
+           {currentPage === "Security" && <Security />}
+         
         </div>
       </div>
     </div>
@@ -78,6 +81,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="security" element={<Security />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
@@ -95,6 +99,19 @@ function App() {
         />
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="*" element={<Navigate to="/login" />} />
+        
+     {/* <Route
+    path="/security"
+    element={
+      <Dashboard
+        currentPage="Security"
+        setCurrentPage={setCurrentPage}
+        sidebarCollapsed={sidebarCollapsed}
+        toggleSidebar={toggleSidebar}
+      />
+    }
+  /> */}
+
       </Routes>
     </Router>
   );
