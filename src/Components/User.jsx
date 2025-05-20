@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "../CSS/user.css";
 
 const User = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); 
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("name-asc");
 
-  const itemsPerPage = 5;
+  const itemsPerPage = 10; 
   const pageLimit = 5;
 
   const allUsers = Array.from({ length: 50 }, (_, i) => ({
@@ -74,6 +74,7 @@ const User = () => {
   return (
     <div className="user-container">
         <h2 className="user-title">Users</h2>
+        
       <div className="users-section">
         <div className="users-header">
           <div className="section-header">
@@ -92,7 +93,6 @@ const User = () => {
                 onChange={handleSearchChange}
               />
             </div>
-
             <div className="sort-dropdown">
               <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
                 <option value="name-asc">Name </option>
@@ -103,7 +103,7 @@ const User = () => {
             </div>
 
             <button className="export-button" onClick={handleExport}>
-            <img src="/public/Masked Icon.svg"></img>  Export 
+            <img src="/public/Masked Icon.svg" alt="Export"></img>  Export 
             </button>
           </div>
         </div>
