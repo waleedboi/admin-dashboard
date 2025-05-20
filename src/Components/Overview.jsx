@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import "../CSS/home.css";
+import "../CSS/home.css"; // Import the new CSS file
 
 const Overview = () => {
     const [activeDelivery, setActiveDelivery] = useState('On the way');
@@ -35,59 +35,59 @@ const Overview = () => {
     };
 
     return (
-        <div className="main-content">
-            <div className="scroll-wrapper">
-                <div className="content-area">
-                    <h1 className="page-title">Overview</h1>
-                    <div className="custom-row">
-                        <div className="custom-card first-card" id="congration">
-                        
-                                <div className="congratulation-card">
-                                    <div className="congrats-row">
-                                        <div className="congrats-info">
-                                            <h4>Congratulations Lucas 🎉</h4>
-                                            <p>Best seller of the month</p>
-                                            <div className="amount">$48.9k</div>
-                                            <button className="btn btn-view-sales">View Sales</button>
-                                        </div>
-                                        <div className="congrats-image-wrapper">
-                                            <img src="/verify-your-email-illustration.svg" alt="Celebration" className="congrats-image" />
-                                        </div>
+        <div className="overview-container">
+            <div className="overview-scroll-wrapper">
+                <div className="overview-content-area">
+                    <h1 className="overview-page-title">Overview</h1>
+                    <div className="overview-custom-row">
+                        <div className="overview-custom-card congratulation">
+                            <div className="overview-congratulation-card">
+                                <div className="overview-congrats-row">
+                                    <div className="overview-congrats-info">
+                                        <h4 className="overview-congrats-title">Congratulations Lucas 🎉</h4>
+                                        <p className="overview-congrats-desc">Best seller of the month</p>
+                                        <div className="overview-amount">$48.9k</div>
+                                        <button className="overview-btn-view-sales">View Sales</button>
+                                    </div>
+                                    <div className="overview-congrats-image-wrapper">
+                                        <img src="/verify-your-email-illustration.svg" alt="Celebration" className="overview-congrats-image" />
                                     </div>
                                 </div>
-                         
+                            </div>
                         </div>
-                        <div className="custom-card  second-card" id="congrationsers">
-                            <div className="card">
-                                <div className="stats-card">
-                                    <h5 className="stats-title">Statistics</h5>
-                                    <div className="stats-container">
-                                        <div className="stat-item">
+                        
+                        {/* First row, second card */}
+                        <div className="overview-custom-card statistics">
+                            <div className="overview-card">
+                                <div className="overview-stats-card">
+                                    <h5 className="overview-stats-title">Statistics</h5>
+                                    <div className="overview-stats-container">
+                                        <div className="overview-stat-item">
                                             <img src="/Icon.svg" alt="" />
-                                            <div className="stat-info">
-                                                <div className="stat-value">230k</div>
-                                                <div className="stat-label">Users</div>
+                                            <div className="overview-stat-info">
+                                                <div className="overview-stat-value">230k</div>
+                                                <div className="overview-stat-label">Users</div>
                                             </div>
                                         </div>
-                                        <div className="stat-item">
+                                        <div className="overview-stat-item">
                                             <img src="/Icon1.svg" alt="" />
-                                            <div className="stat-info">
-                                                <div className="stat-value">8.549k</div>
-                                                <div className="stat-label">Total Drivers</div>
+                                            <div className="overview-stat-info">
+                                                <div className="overview-stat-value">8.549k</div>
+                                                <div className="overview-stat-label">Total Drivers</div>
                                             </div>
                                         </div>
-                                        <div className="stat-item" id="state-itemee">
+                                        <div className="overview-stat-item">
                                             <img src="/Icon2.svg" alt="" />
-                                            <div className="stat-info">
-                                                <div className="stat-value">1.423k</div>
-                                                <div className="stat-label">Total Deliveries</div>
+                                            <div className="overview-stat-info">
+                                                <div className="overview-stat-value">1.423k</div>
+                                                <div className="overview-stat-label">Total Deliveries</div>
                                             </div>
                                         </div>
-                                        <div className="stat-item" id="state-iteme">
+                                        <div className="overview-stat-item">
                                             <img src="/Icon4.svg" alt="" />
-                                            <div className="stat-info">
-                                                <div className="stat-value">$9745</div>
-                                                <div className="stat-label">Revenue</div>
+                                            <div className="overview-stat-info">
+                                                <div className="overview-stat-value">$9745</div>
+                                                <div className="overview-stat-label">Revenue</div>
                                             </div>
                                         </div>
                                     </div>
@@ -95,23 +95,28 @@ const Overview = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="custom-row">
-                        <div className="custom-cards first-card" id="congrationsss">
-                            <div className="card">
-                                <div className="earning-card">
-                                    <div className="card-header">
-                                        <h5 className="card-title">Total Earning</h5>
-                                        <div className="custom-dropdown" ref={dropdownRef}>
-                                            <button className="btn dropdown-toggle" onClick={toggleDropdown}>
+                    
+                    <div className="overview-custom-row">
+                        {/* Second row, first card */}
+                        <div className="overview-custom-card earnings">
+                            <div className="overview-card">
+                                <div className="overview-earning-card">
+                                    <div className="overview-card-header">
+                                        <h5 className="overview-card-title">Total Earning</h5>
+                                        <div className="overview-custom-dropdown" ref={dropdownRef}>
+                                            <button 
+                                                className="overview-dropdown-toggle" 
+                                                onClick={toggleDropdown}
+                                            >
                                                 {selectedOption}
-                                                <span className={`arrow-icon ${isOpen ? 'open' : ''}`}>▼</span>
+                                                <span className={`overview-arrow-icon ${isOpen ? 'open' : ''}`}>▼</span>
                                             </button>
                                             {isOpen && (
-                                                <ul className="dropdown-menu">
+                                                <ul className="overview-dropdown-menu">
                                                     {options.map((option) => (
                                                         <li
                                                             key={option}
-                                                            className={`dropdown-item ${option === selectedOption ? 'active' : ''}`}
+                                                            className={`overview-dropdown-item ${option === selectedOption ? 'active' : ''}`}
                                                             onClick={() => handleOptionSelect(option)}
                                                         >
                                                             {option}
@@ -122,60 +127,71 @@ const Overview = () => {
                                         </div>
                                     </div>
 
-                                    <div className="earning-info">
-                                        <span className="earning-percentage">87%</span>
-                                        <span className="earning-change">
+                                    <div className="overview-earning-info">
+                                        <span className="overview-earning-percentage">87%</span>
+                                        <span className="overview-earning-change">
                                             <img src='/public/chevron-up.svg' alt="up" /> 25.8%
                                         </span>
                                     </div>
 
-                                    <div className="chart-wrapper">
-                                        <div className="chart-row primary-row">
-                                            {[70, 45, 100, 50, 65, 85, 75, 30].map((h, i) => (
-                                                <div key={i} className="chart-bar primary" style={{ height: `${h}%` }}></div>
-                                            ))}
-                                        </div>
-                                        <div className="chart-rows secondary-row">
-                                            {[50, 40, 70, 40, 45, 65, 55, 20].map((h, i) => (
-                                                <div key={i} className="chart-bar secondary" style={{ height: `${h}%` }}></div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                   
+                                     <div className="overview-container">
+  <div className="overview-chart-wrapper">
+    <div className="overview-chart-rowss">
+      {[70, 45, 100, 50, 65, 85, 75, 30].map((h, i) => (
+        <div 
+          key={i} 
+          className="overview-chart-bar primary"
+          style={{ height: `${h}%` }}
+        ></div>
+      ))}
+    </div>
+    <div className="overview-chart-rows">
+      {[70, 45, 100, 50, 65, 85, 75, 30].map((h, i) => (
+        <div 
+          key={i} 
+          className="overview-chart-bar primarys"
+          style={{ height: `${h}%` }}
+        ></div>
+      ))}
+    </div>
+  </div>
 
-                                    <div className="stat-itemss">
-                                        <img src="/Iconlast.svg" alt="Icon" />
-                                        <div className="stat-informationss">
-                                            <div className="stat-valuess">Total Revenue</div>
-                                            <div className="stat-labelss">Client Payment</div>
-                                        </div>
-                                        <p className="stat-amount">+$126</p>
-                                    </div>
-
-                                    <div className="stat-itemsss">
+  <div className="overview-stat-items">
+    <img src="/Iconlast.svg" alt="Icon" />
+    <div className="overview-stat-information">
+      <div className="overview-stat-value">Total Revenue</div>
+      <div className="overview-stat-label">Client Payment</div>
+    </div>
+    <p className="overview-stat-amount">+$126</p>
+  </div>
+</div>
+                                    <div className="overview-stat-items">
                                         <img src="/Iconss.svg" alt="Icon" />
-                                        <div className="stat-informations">
-                                            <div className="stat-valuess">Total Sales</div>
-                                            <div className="stat-labelss">Refund</div>
+                                        <div className="overview-stat-information">
+                                            <div className="overview-stat-value">Total Sales</div>
+                                            <div className="overview-stat-label">Refund</div>
                                         </div>
-                                        <p className="stat-amount">+$98</p>
+                                        <p className="overview-stat-amount">+$98</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="custom-cards second-card" id="congrationsers">
-                            <div className="card">
-                                <div className="delivery-card">
-                                    <div className="card-header">
-                                        <h5 className="card-titles">Delivery overview</h5>
+                        {/* Second row, second card */}
+                        <div className="overview-custom-card delivery">
+                            <div className="overview-card">
+                                <div className="overview-delivery-card">
+                                    <div className="overview-card-header">
+                                        <h5 className="overview-card-titles">Delivery overview</h5>
                                         <img src="/dots-vertical.svg" alt="Menu" />
                                     </div>
 
-                                    <div className="delivery-options">
+                                    <div className="overview-delivery-options">
                                         {['On the way', 'Unloading', 'Loading', 'Waiting'].map((status) => (
                                             <div
                                                 key={status}
-                                                className={`delivery-option ${activeDelivery === status ? 'active' : ''}`}
+                                                className={`overview-delivery-option ${activeDelivery === status ? 'active' : ''}`}
                                                 onClick={() => setActiveDelivery(status)}
                                             >
                                                 {status}
@@ -183,22 +199,22 @@ const Overview = () => {
                                         ))}
                                     </div>
 
-                                    <div className="progress-container">
-                                        <div className="progress-bar-wrapper">
-                                            <div className="progress-bar way">39.7%</div>
-                                            <div className="progress-bar unloading">28.3%</div>
-                                            <div className="progress-bar loading">17.4%</div>
-                                            <div className="progress-bar waiting">14.6%</div>
+                                    <div className="overview-progress-container">
+                                        <div className="overview-progress-bar-wrapper">
+                                            <div className="overview-progress-bar way"></div>
+                                            <div className="overview-progress-bar unloading"></div>
+                                            <div className="overview-progress-bar loading"></div>
+                                            <div className="overview-progress-bar waiting"></div>
                                         </div>
                                     </div>
 
                                     {deliveryData.map((item, index) => (
-                                        <div className="delivery-detail" key={index}>
-                                            <div className="delivery-flex">
-                                                <img src={item.img} alt={item.status} className="delivery-icon" />
-                                                <div className="delivery-titles">{item.status}</div>
-                                                <div className="delivery-time">3hr 15min</div>
-                                                <div className="delivery-percent">{item.percent}</div>
+                                        <div className="overview-delivery-detail" key={index}>
+                                            <div className="overview-delivery-flex">
+                                                <img src={item.img} alt={item.status} className="overview-delivery-icon" />
+                                                <div className="overview-delivery-titles">{item.status}</div>
+                                                <div className="overview-delivery-time">3hr 15min</div>
+                                                <div className="overview-delivery-percent">{item.percent}</div>
                                             </div>
                                         </div>
                                     ))}
