@@ -39,11 +39,9 @@ const Overview = () => {
             <div className="scroll-wrapper">
                 <div className="content-area">
                     <h1 className="page-title">Overview</h1>
-
-                    {/* First Row */}
-                    <div className="row align-items-stretch">
-                        <div className="col-md-6 col-lg-5" id="congration">
-                            <div className="card h-100">
+                    <div className="custom-row">
+                        <div className="custom-card first-card" id="congration">
+                        
                                 <div className="congratulation-card">
                                     <div className="congrats-row">
                                         <div className="congrats-info">
@@ -57,9 +55,9 @@ const Overview = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                         
                         </div>
-                        <div className="col-md-6 col-lg-7" id="congration">
+                        <div className="custom-card  second-card" id="congrationsers">
                             <div className="card">
                                 <div className="stats-card">
                                     <h5 className="stats-title">Statistics</h5>
@@ -97,10 +95,8 @@ const Overview = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Second Row */}
-                    <div className="row">
-                        <div className="col-lg-7" id="congration">
+                    <div className="custom-row">
+                        <div className="custom-cards first-card" id="congrationsss">
                             <div className="card">
                                 <div className="earning-card">
                                     <div className="card-header">
@@ -167,7 +163,7 @@ const Overview = () => {
                             </div>
                         </div>
 
-                        <div className="col-lg-5" id="congration">
+                        <div className="custom-cards second-card" id="congrationsers">
                             <div className="card">
                                 <div className="delivery-card">
                                     <div className="card-header">

@@ -27,13 +27,13 @@ const Signup = () => {
 
       <h3>Account Information</h3>
 
-      <label>Username</label>
+      <label  style={{ marginBottom: -5}}>Username</label>
       <input type="text" placeholder="Enter your username" required />
 
-      <label>Email</label>
+      <label style={{ marginBottom: -5}}>Email</label>
       <input type="email" placeholder="Enter your email" required />
 
-      <label>Password</label>
+      <label style={{ marginBottom: -5}}>Password</label>
       <div className="password-field">
         <input
           type={showPassword ? "text" : "password"}
@@ -53,7 +53,7 @@ const Signup = () => {
 
       <div className="checkbox">
         <input type="checkbox" id="terms" required />
-        <label htmlFor="terms">
+        <label htmlFor="terms" style={{ marginBottom: -5}}>
           I agree to{" "}
           <a href="#" className="privacy">
             privacy policy & terms

@@ -24,7 +24,7 @@ const ResetPassword = () => {
                 <p className="instruction">Your new password must be different from previously used passwords</p>
 
                 <div className="form-group password-wrapper">
-                    <label>New Password</label>
+                    <label >New Password</label>
                     <div className="input-container">
                         <input
                             type={showPassword ? 'text' : 'password'}

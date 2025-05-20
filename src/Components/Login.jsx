@@ -27,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <form className="signup-form login-form" onSubmit={handleSubmit}>
+    <form className="signup-form login-form" onSubmit={handleSubmit} >
       <img src="/DELIVERMEE LOGO 1.svg" alt="Logo" />
       <h2 className="signup">Login</h2>
       <p className="subtitle">Enter Your Account Details to Log In..</p>
@@ -38,16 +38,17 @@ const Login = () => {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <label>Email or Username</label>
-      <input
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
+      <label style={{ marginBottom: -5 }}>Email or Username</label>
+<input
+  type="email"
+  placeholder="Enter your email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  required
+  style={{ marginTop: 0 }}
+/>
 
-      <label>Password</label>
+      <label style={{ marginBottom: -5 }}>Password</label>
       <div className="password-field">
         <input
           type={showPassword ? "text" : "password"}
@@ -67,13 +68,16 @@ const Login = () => {
         </span>
       </div>
 
-      <div className="form-options">
-        <div className="remember-me">
-          <input type="checkbox" id="terms" />
-          <label htmlFor="terms">Remember Me</label>
-        </div>
-        <Link to="/reset-password" className="forgot-password">Forgot Password?</Link>
-      </div>
+      <div className="form-options" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '11px' }}>
+  <div className="remember-me" style={{ display: 'flex', alignItems: 'center', gap: '4px', transform: 'translateY(2px)' }}>
+    <input type="checkbox" id="terms" style={{ margin: 0 }} />
+    <label htmlFor="terms" style={{ marginBottom: -5}}>Remember Me</label>
+  </div>
+  <Link to="/reset-password" className="forgot-password" style={{ color: '#007bff', fontSize: '11px', whiteSpace: 'nowrap', textDecoration: 'none' }}>
+    Forgot Password?
+  </Link>
+</div>
+
 
       <button
         type="submit"

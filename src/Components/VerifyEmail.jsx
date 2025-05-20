@@ -25,7 +25,7 @@ const EmailVerification = () => {
       </p>
 
       <div className="input-group">
-        <label htmlFor="code">Enter Verification code here</label>
+        <label htmlFor="code" >Enter Verification code here</label>
         <input type="text" id="code" placeholder="Code" />
       </div>
 

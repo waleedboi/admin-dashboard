@@ -3,6 +3,7 @@ import "../CSS/Setting.css";
 import { FiCopy } from "react-icons/fi";
 
 
+
 const UserProfile = () => {
   const [activePage, setActivePage] = useState('account');
 
@@ -783,7 +784,18 @@ const UserProfile = () => {
         )}
       </div>
 
-
+{activePage === 'checkr' && (
+  // <div className="profile-card">
+  //   <h2>Checkr Reports</h2>
+  //   <p>Information about recent Checkr reports will appear here.</p>
+  // </div>
+  <div className="container">
+        <h1 className="support-issue">Support & Issue Resolution</h1>
+         <div className='profile'>
+        <div className="profile-cards">
+          <div className="nav-tabs" ></div></div>
+     </div></div>
+)}
       
       
     </div>
