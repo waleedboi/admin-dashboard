@@ -16,10 +16,12 @@ const Driver = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [sortAsc, setSortAsc] = useState(true);
-  const totalPages = 5;
+  const recordsPerPage = 10;
+  const totalPages = Math.ceil(initialDrivers.length / recordsPerPage);
 
   const handleSearch = (e) => {
     setSearchText(e.target.value.toLowerCase());
+    setCurrentPage(1); // Reset to first page on search
   };
 
   const toggleSort = () => {
@@ -27,28 +29,40 @@ const Driver = () => {
   };
 
   const exportToCSV = () => {
-    const headers = ["Driver Name", "Vehicle Type", "Document Status", "Availability"];
-    const rows = filteredDrivers.map(d => [d.name, d.vehicle, d.status, d.availability]);
-    const csv = [headers, ...rows].map(e => e.join(",")).join("\n");
-
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.setAttribute("download", "drivers.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      const headers = ["Driver Name", "Vehicle Type", "Document Status", "Availability"];
+      const rows = filteredDrivers.map(d => [d.name, d.vehicle, d.status, d.availability]);
+      const csv = [headers, ...rows].map(row => row.join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "drivers.csv");
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error exporting CSV:", error);
+      alert("Failed to export data. Please try again.");
+    }
   };
 
+  // Filter drivers based on search text
   let filteredDrivers = initialDrivers.filter(driver =>
     driver.name.toLowerCase().includes(searchText)
   );
 
+  // Sort filtered drivers
   if (sortAsc) {
     filteredDrivers = [...filteredDrivers].sort((a, b) => a.name.localeCompare(b.name));
   } else {
     filteredDrivers = [...filteredDrivers].sort((a, b) => b.name.localeCompare(a.name));
   }
+  const indexOfLastDriver = currentPage * recordsPerPage;
+  const indexOfFirstDriver = indexOfLastDriver - recordsPerPage;
+  const currentDrivers = filteredDrivers.slice(indexOfFirstDriver, indexOfLastDriver);
 
   return (
     <div className="main-containerr">
@@ -61,6 +75,8 @@ const Driver = () => {
           </div>
 
           <div className="toolbar">
+            <div className="search-container">
+                <img src="/Icon & Text.svg" alt="Search" className="search-icon" />
               <input
                 type="text"
                 placeholder="Search"
@@ -68,15 +84,17 @@ const Driver = () => {
                 value={searchText}
                 onChange={handleSearch}
               />
-
-            <div className="toolbar-btn" onClick={toggleSort}>
-              <span>Sort By</span>
-              <span role="img" aria-label="arrow">▼</span>
             </div>
 
-            <div className="toolbar-btn" onClick={exportToCSV}>
-              <span>Export</span>
-              <span role="img" aria-label="download">📥</span>
+            <div className="toolbar-buttons">
+              <button className="toolbar-btn" onClick={toggleSort}>
+                <span>Sort {sortAsc ? "A-Z" : "Z-A"}</span>
+                <span role="img" aria-label="arrow">{sortAsc ? "▲" : "▼"}</span>
+              </button>
+
+              <button className="toolbar-btn" onClick={exportToCSV}>
+                <img src="/public/Masked Icon.svg" alt="Export"></img> <span>Export</span>
+              </button>
             </div>
           </div>
         </div>
@@ -93,7 +111,7 @@ const Driver = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredDrivers.map((driver, idx) => (
+            {currentDrivers.map((driver, idx) => (
               <tr key={idx}>
                 <td><input type="checkbox" /></td>
                 <td>
@@ -111,8 +129,9 @@ const Driver = () => {
                 </td>
                 <td>
                   <div className="td-stack status-with-icon">
+                    
                     <span>{driver.availability}</span>
-                    <img src="/public/Frame 2766.svg" alt="status arrow" className="status-arrow" />
+                      <img src="/public/Frame 2766.svg" alt="status arrow" className="status-arrow" />
                   </div>
                 </td>
                 <td>
@@ -128,19 +147,33 @@ const Driver = () => {
         </table>
 
         <div className="page-flex">
-          <p className="pages">Showing 1 to 10 of {filteredDrivers.length} entries</p>
+          <p className="pages">
+            Showing {indexOfFirstDriver + 1} to {Math.min(indexOfLastDriver, filteredDrivers.length)} of {filteredDrivers.length} entries
+          </p>
           <div className="pagination">
             <div className="page-item" onClick={() => setCurrentPage(1)}>«</div>
             <div className="page-item" onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>‹</div>
-            {Array.from({ length: totalPages }, (_, i) => (
-              <div
-                key={i}
-                className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
-                onClick={() => setCurrentPage(i + 1)}
-              >
-                {i + 1}
-              </div>
-            ))}
+            {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+              let pageNum;
+              if (totalPages <= 5) {
+                pageNum = i + 1;
+              } else {
+                const middle = Math.min(Math.max(currentPage, 3), totalPages - 2);
+                pageNum = i + middle - 2;
+                if (pageNum < 1) pageNum = i + 1;
+                if (pageNum > totalPages) pageNum = totalPages - (4 - i);
+              }
+              
+              return (
+                <div
+                  key={i}
+                  className={`page-item ${currentPage === pageNum ? "active" : ""}`}
+                  onClick={() => setCurrentPage(pageNum)}
+                >
+                  {pageNum}
+                </div>
+              );
+            })}
             <div className="page-item" onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}>›</div>
             <div className="page-item" onClick={() => setCurrentPage(totalPages)}>»</div>
           </div>

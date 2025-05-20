@@ -1,8 +1,7 @@
 .user-container {
   width: 100%;
   max-width: 1200px;
-  margin: 1% 0 0 3% !important;
-
+  margin: 0% 0 0 3% !important;
   padding: 20px;
 }
 
@@ -10,7 +9,6 @@
   color: #076271;
   font-size: 24px;
   font-weight: 700;
-
 }
 
 .users-section {
@@ -18,7 +16,6 @@
   box-shadow: 0px 3px 12px 0px #2F2B3D24;
   border-radius: 8px;
   padding: 20px;
-  margin-bottom: 20px;
 }
 
 .users-header {
@@ -310,7 +307,6 @@
 @media (max-width: 480px) {
   .users-table {
     min-width: 600px;
-    /* Ensures horizontal scroll on very small screens */
   }
 
   .page-item {
