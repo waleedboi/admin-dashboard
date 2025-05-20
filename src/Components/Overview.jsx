@@ -55,7 +55,7 @@ const Overview = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         {/* First row, second card */}
                         <div className="overview-custom-card statistics">
                             <div className="overview-card">
@@ -95,7 +95,7 @@ const Overview = () => {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className="overview-custom-row">
                         {/* Second row, first card */}
                         <div className="overview-custom-card earnings">
@@ -104,8 +104,8 @@ const Overview = () => {
                                     <div className="overview-card-header">
                                         <h5 className="overview-card-title">Total Earning</h5>
                                         <div className="overview-custom-dropdown" ref={dropdownRef}>
-                                            <button 
-                                                className="overview-dropdown-toggle" 
+                                            <button
+                                                className="overview-dropdown-toggle"
                                                 onClick={toggleDropdown}
                                             >
                                                 {selectedOption}
@@ -134,38 +134,29 @@ const Overview = () => {
                                         </span>
                                     </div>
 
-                                   
-                                     <div className="overview-container">
-  <div className="overview-chart-wrapper">
-    <div className="overview-chart-rowss">
-      {[70, 45, 100, 50, 65, 85, 75, 30].map((h, i) => (
-        <div 
-          key={i} 
-          className="overview-chart-bar primary"
-          style={{ height: `${h}%` }}
-        ></div>
-      ))}
-    </div>
-    <div className="overview-chart-rows">
-      {[70, 45, 100, 50, 65, 85, 75, 30].map((h, i) => (
-        <div 
-          key={i} 
-          className="overview-chart-bar primarys"
-          style={{ height: `${h}%` }}
-        ></div>
-      ))}
-    </div>
-  </div>
 
-  <div className="overview-stat-items">
-    <img src="/Iconlast.svg" alt="Icon" />
-    <div className="overview-stat-information">
-      <div className="overview-stat-value">Total Revenue</div>
-      <div className="overview-stat-label">Client Payment</div>
-    </div>
-    <p className="overview-stat-amount">+$126</p>
-  </div>
-</div>
+                                    <div className="overview-container">
+                                        <div className="chart-wrapper">
+                                            <div className="chart-row primary-row">
+                                                {[70, 45, 100, 50, 65, 85, 75, 30].map((h, i) => (
+                                                    <div key={i} className="chart-bar primary" style={{ height: `${h}%` }}></div>
+                                                ))}
+                                            </div>
+                                            <div className="chart-rows secondary-row">
+                                                {[50, 40, 70, 40, 45, 65, 55, 20].map((h, i) => (
+                                                    <div key={i} className="chart-bar secondary" style={{ height: `${h}%` }}></div>
+                                                ))}
+                                            </div></div>
+
+                                        <div className="overview-stat-items">
+                                            <img src="/Iconlast.svg" alt="Icon" />
+                                            <div className="overview-stat-information">
+                                                <div className="overview-stat-value">Total Revenue</div>
+                                                <div className="overview-stat-label">Client Payment</div>
+                                            </div>
+                                            <p className="overview-stat-amount">+$126</p>
+                                        </div>
+                                  
                                     <div className="overview-stat-items">
                                         <img src="/Iconss.svg" alt="Icon" />
                                         <div className="overview-stat-information">
@@ -173,7 +164,7 @@ const Overview = () => {
                                             <div className="overview-stat-label">Refund</div>
                                         </div>
                                         <p className="overview-stat-amount">+$98</p>
-                                    </div>
+                                    </div> </div>
                                 </div>
                             </div>
                         </div>
@@ -201,10 +192,10 @@ const Overview = () => {
 
                                     <div className="overview-progress-container">
                                         <div className="overview-progress-bar-wrapper">
-                                            <div className="overview-progress-bar way"></div>
-                                            <div className="overview-progress-bar unloading"></div>
-                                            <div className="overview-progress-bar loading"></div>
-                                            <div className="overview-progress-bar waiting"></div>
+                                            <div className="overview-progress-bar way">39.7%</div>
+                                            <div className="overview-progress-bar unloading">28.3%</div>
+                                            <div className="overview-progress-bar loading">17.4%</div>
+                                            <div className="overview-progress-bar waiting">14.6%</div>
                                         </div>
                                     </div>
 

@@ -1,6 +1,8 @@
 .overview-container {
-  padding: 20px;
   width: 100%;
+  max-width: 1200px;
+  margin: 2.5% 0 0 3% !important;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -20,7 +22,6 @@
   font-weight: 600;
 }
 
-/* Card rows */
 .overview-custom-row {
   display: flex;
   flex-direction: row;
@@ -144,18 +145,31 @@
 
 .overview-stats-container {
   display: flex;
-  /* flex-wrap: wrap; */
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
+@media (max-width: 768px) {
+  .overview-stat-item {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+@media (max-width: 480px) {
+  .overview-stat-item {
+    flex: 1 1 100%;
+  }
+}
 .overview-stat-item {
-  flex: 1 1 calc(80% - 10px);
+   flex: 1 1 calc(20% - 20px); 
   display: flex;
   align-items: center;
   gap: 12px;
- margin: 35px 0 0 0;
- 
-
+  min-width: 100px;
+  margin: 35px 0 0 0;
+}
+.overview-stat-item img {
+  max-width: 40px;
+  height: auto;
 }
 
 .overview-stat-info {
@@ -259,41 +273,6 @@
   font-size: 14px;
 }
 
-
-.overview-chart-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.overview-chart-rowss {
-  display: flex;
-  align-items: flex-start;
-  height: 15px; 
-  gap: 4px;
-}
-.overview-chart-rows {
-  display: flex;
-  align-items: flex-end;
-  height: 55px; 
-  gap: 23px;
-}
-
-.overview-chart-bar {
-  width: 7px;
-  border-radius: 4px;
-   margin: auto;
-   margin: 0;
-}
-
-.primary {
-  background-color: #076271
-}
-
-.primarys {
-  background-color: #808390;
-}
-
 .overview-container{
    display: flex;
   flex-direction: column; 
@@ -305,13 +284,50 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid #F2F4F7;
+  
 }
 
 .overview-stat-information {
   flex: 1;
 }
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.chart-row{
+   display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 60px;
+  gap: 5px;
+}
+.chart-rows {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 60px;
+  gap: 5px;
+}
+
+.chart-bar {
+  width: 6px;
+  border-radius: 4px;
+  transition: height 0.3s ease;
+}
+
+.primary {
+  background-color: #808390;
+  background-color: #076271
+}
+
+.secondary {
+  background-color: #808390;
+}
+
 
 .overview-stat-amount {
   color: #12B76A;
@@ -334,10 +350,12 @@
   display: flex;
   border-bottom: 1px solid #F2F4F7;
   margin-bottom: 20px;
+ 
 }
 
 .overview-delivery-option {
   padding: 12px 20px;
+  width: 100%;
   cursor: pointer;
   position: relative;
   font-size: 14px;
@@ -351,32 +369,40 @@
 
 .overview-progress-container {
   margin-bottom: 20px;
+ 
 }
 
 .overview-progress-bar-wrapper {
   display: flex;
-  height: 8px;
+  text-align: center !important;
+  height: 40px;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .overview-progress-bar.way {
-  background-color: #7F56D9;
+background-color:#f3f2f3;
   width: 39.7%;
 }
 
 .overview-progress-bar.unloading {
-  background-color: #F9F5FF;
+ background-color:#076271;
   width: 28.3%;
+
+   color: white;
+
+   
 }
 
 .overview-progress-bar.loading {
-  background-color: #EAECF0;
+ background-color:#0762717D;
   width: 17.4%;
+   color: white;
 }
 
 .overview-progress-bar.waiting {
-  background-color: #F2F4F7;
+ background-color:#2F2B3D;
+ color: white;
   width: 14.6%;
 }
 
@@ -407,4 +433,73 @@
 
 .overview-delivery-percent {
   font-weight: 500;
+}
+
+@media (max-width: 599px) {
+  .overview-custom-row {
+    flex-direction: column;
+  }
+
+  .overview-custom-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .overview-progress-bar-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .overview-progress-bar {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+
+  .overview-stats-container {
+    flex-direction: column;
+  }
+
+  .overview-stat-item {
+    margin: 10px 0;
+  }
+
+  .overview-earning-card {
+    max-width: 100%;
+  }
+
+  .overview-congrats-image {
+    display: none; 
+  }
+}
+@media (min-width: 600px) and (max-width: 991px) {
+  .overview-custom-card {
+    flex: 1 1 calc(50% - 10px);
+    max-width: 100%;
+  }
+
+  .overview-stats-container {
+    flex-wrap: wrap;
+  }
+
+  .overview-progress-bar-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .overview-progress-bar {
+    flex: 1 1 100%;
+  }
+}
+@media (min-width: 992px) {
+  .overview-custom-row {
+    flex-direction: row;
+  }
+
+  .overview-custom-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  .overview-stats-container {
+    flex-direction: row;
+  }
 }
