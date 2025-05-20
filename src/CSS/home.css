@@ -1,7 +1,7 @@
 .overview-container {
   width: 100%;
   max-width: 1200px;
-  margin: 2.5% 0 0 3% !important;
+  margin: 1% 0 0 3% !important;
   padding: 0;
   box-sizing: border-box;
 }
@@ -9,6 +9,7 @@
 .overview-scroll-wrapper {
   overflow-y: auto;
   height: 100%;
+
 }
 
 .overview-content-area {

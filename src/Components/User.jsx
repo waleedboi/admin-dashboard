@@ -73,10 +73,7 @@ const User = () => {
 
   return (
     <div className="user-container">
-      <div className="user-header">
         <h2 className="user-title">Users</h2>
-      </div>
-
       <div className="users-section">
         <div className="users-header">
           <div className="section-header">
@@ -98,15 +95,15 @@ const User = () => {
 
             <div className="sort-dropdown">
               <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-                <option value="name-asc">Name ↑</option>
-                <option value="name-desc">Name ↓</option>
-                <option value="rides-asc">Rides ↑</option>
-                <option value="rides-desc">Rides ↓</option>
+                <option value="name-asc">Name </option>
+                <option value="name-desc">Name </option>
+                <option value="rides-asc">Rides </option>
+                <option value="rides-desc">Rides </option>
               </select>
             </div>
 
             <button className="export-button" onClick={handleExport}>
-              Export 📥
+            <img src="/public/Masked Icon.svg"></img>  Export 
             </button>
           </div>
         </div>
@@ -120,7 +117,7 @@ const User = () => {
                 <th>Email</th>
                 <th>Sign-Up Method</th>
                 <th>Total Deliveries</th>
-                <th>Actions</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>

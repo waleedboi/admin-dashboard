@@ -1,49 +1,46 @@
 .user-container {
   width: 100%;
   max-width: 1200px;
-  /* margin: 15px 40px; */
-  margin: 3.5% 0 0 11% !important;
+  margin: 1% 0 0 3% !important;
 
   padding: 20px;
-}
-
-.user-header {
-  margin-bottom: 20px;
 }
 
 .user-title {
   color: #076271;
   font-size: 24px;
   font-weight: 700;
-  margin: 0 0 20px 0;
 
 }
+
 .users-section {
-  background-color:white;
-box-shadow: 0px 3px 12px 0px #2F2B3D24;
+  background-color: #FDFBF9;
+  box-shadow: 0px 3px 12px 0px #2F2B3D24;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
 }
+
 .users-header {
   display: flex;
+  background-color: transparent;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 15px;
-  margin-bottom: 20px;
+  border: none;
 }
 
 .section-header {
   display: flex;
   flex-direction: column;
-  gap:20px
+  gap: 20px
 }
 
 .section-header h2 {
   font-size: 24px;
   font-weight: 600;
-  color:#2F2B3DE5;
+  color: #2F2B3DE5;
   margin: 0 0 5px 0;
 }
 
@@ -52,64 +49,60 @@ box-shadow: 0px 3px 12px 0px #2F2B3D24;
   font-weight: 400;
   color: #2F2B3DE5;
 }
+
 .toolbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.search-container {
-  position: relative;
-  width: 250px;
-  height: 40px;
-      margin-top: 25px;
+  gap: 1rem;
+  padding: 10px 20px;
 }
 
-.search-icon {
-  position: absolute;
-  top: 35%;
-  left: 10px;
-  transform: translateY(-50%);
-  width: 18px;
-  pointer-events: none;
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
 }
 
 .search-input {
-  width: 100%;
-    outline: none;
-  padding: 10px 10px 10px 32px !important; 
-  border-radius: 5px;
-  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
 }
 
+.search-icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 25px
+}
 
 .sort-dropdown select {
-  height: 40px;
   padding: 6px 10px;
-  font-size: 14px;
-  border-radius: 5px;
   border: 1px solid #ccc;
-  outline: none;
-  background-color:white
+  border-radius: 4px;
 }
 
 .export-button {
-    display: flex;
+  display: flex;
   align-items: center;
-  height: 40px;
+  gap: 8px;
   padding: 6px 12px;
   background-color: #80839029;
   color: #808390;
-  border-radius: 5px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
-  gap: 6px;
-  transition: background-color 0.3s ease;
 }
-.export-button:hover {
-  background-color: #0056b3;
+
+.export-button img {
+  width: 16px;
+  height: 16px;
 }
+
 @media (max-width: 768px) {
   .toolbar {
     flex-direction: column;
@@ -131,79 +124,85 @@ box-shadow: 0px 3px 12px 0px #2F2B3D24;
     justify-content: center;
   }
 }
+
 .table-responsive {
   overflow-x: auto;
-  margin-bottom: 20px;
 }
 
 .users-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 800px; 
+  min-width: 1064px;
+  font-family: Arial, sans-serif;
+  border: none;
 }
 
-
-.users-table td {
-  border-bottom: 1px solid #ddd;
+.users-table thead th {
+  height: 52px;
+  padding: 12px;
   text-align: left;
-  font-size: 16px;
-  font-weight: 400;
-  color: #2F2B3DE5;
-   text-align: center; 
-   border-top: 1px solid #ddd;
-}
-
-.users-table th {
-  background-color: #FDFBF9;
-  color: #2F2B3DE5;
-  font-size: 15px;
-  font-weight: 600;
-   padding: 12px 15px;
-  text-align: center;
-}
-.users-table tbody tr {
-  margin: 0;
-  padding: 0;
-}
-
-.users-table tbody tr:hover {
+  font-weight: bold;
   background-color: #f9f9f9;
 }
+
+.users-table tbody td {
+  height: 30px !important;
+  padding: 0px 12px;
+  border-bottom: 1px solid var(--Theme-divider, #2F2B3D1F);
+  vertical-align: middle;
+}
+
 .user-info {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+.user-info img {
+  height: 24px;
+  width: 24px;
+}
+
 .user-avatar {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .action-buttons {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 .action-btn {
-  padding: 7px 15px;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 1;
+
+}
+
+.view-btn {
+  background-color: #0762714D;
   color: #076271;
-  font-size: 16px;
-  font-weight: 400;
-  background-color:#0762714D;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  height: 24px;
+  border-radius: 6px;
 }
 
-.action-btn:hover {
-  background-color: rgba(7, 98, 113, 0.25);
+.history-btn {
+  background-color: #0762714D;
+  color: #076271;
+  height: 24px;
+  border-radius: 6px;
 }
 
-/* Pagination */
+.support-btn {
+  background-color: #0762714D;
+  color: #076271;
+  height: 24px;
+  border-radius: 6px;
+}
+
 .pagination-container {
   display: flex;
   justify-content: space-between;
@@ -250,18 +249,16 @@ box-shadow: 0px 3px 12px 0px #2F2B3D24;
   font-weight: bold;
   border-color: #2F2B3D;
 }
-
-/* Responsive design */
 @media (max-width: 992px) {
   .users-header {
     flex-direction: column;
   }
-  
+
   .toolbar {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .search-bar {
     width: 180px;
   }
@@ -271,38 +268,40 @@ box-shadow: 0px 3px 12px 0px #2F2B3D24;
   .user-container {
     padding: 15px 10px;
   }
-  
+
   .users-section {
     padding: 15px;
   }
-  
+
   .toolbar {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
-  
-  .search-filter, .sort-dropdown, .export-button {
+
+  .search-filter,
+  .sort-dropdown,
+  .export-button {
     width: 100%;
   }
-  
+
   .search-bar {
     width: 100%;
   }
-  
+
   .pagination-container {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .pagination {
     margin-top: 10px;
   }
-  
+
   .action-buttons {
     flex-direction: column;
   }
-  
+
   .action-btn {
     width: 100%;
   }
@@ -310,22 +309,23 @@ box-shadow: 0px 3px 12px 0px #2F2B3D24;
 
 @media (max-width: 480px) {
   .users-table {
-    min-width: 600px; /* Ensures horizontal scroll on very small screens */
+    min-width: 600px;
+    /* Ensures horizontal scroll on very small screens */
   }
-  
+
   .page-item {
     padding: 6px 10px;
     font-size: 12px;
   }
-  
+
   .section-header h2 {
     font-size: 18px;
   }
-  
+
   .section-header span {
     font-size: 14px;
   }
-  
+
   .user-title {
     font-size: 20px;
   }
